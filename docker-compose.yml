@@ -1,0 +1,31 @@
+version: '3'
+services:
+  api:
+    container_name: "meijoHackU2022-api"
+    volumes:
+      - ./app:/app
+    tty: true
+    build: .
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8080 --reload
+    ports:
+      - "8080:8080"
+    environment:
+      PYTHONDONTWRITEBYTECODE: 1
+    depends_on:
+      - db
+  
+
+  db:
+    image: mysql:8.0
+    platform: linux/x86_64  # M1 Macの場合必要
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'  # rootアカウントをパスワードなしで作成
+      MYSQL_DATABASE: 'meijoHackU2022-db'
+      TZ: 'Asia/Tokyo'  # タイムゾーンを日本時間に設定
+    volumes:
+      - mysql_data:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password  # MySQL8.0ではデフォルトが"caching_sha2_password"で、ドライバが非対応のため変更
+    ports:
+      - 3306:3306  # ホストマシンのポート3306を、docker内のポート3306に接続する
+volumes:
+  mysql_data:

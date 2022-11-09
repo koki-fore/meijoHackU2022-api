@@ -1,0 +1,4 @@
+fastapi==0.85.
+uvicorn==0.18.3
+sqlalchemy
+aiomysql
