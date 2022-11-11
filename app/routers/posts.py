@@ -13,9 +13,13 @@ async def list_posts():
 
 @router.post("/posts", response_model=post_schema.PostCreateResponse)
 async def create_post(post_body: post_schema.PostCreate):
-    return post_schema.PostCreateResponse(**post_body.dict())
+    return post_schema.PostCreateResponse(id=1, like_count=0, **post_body.dict())
     
 
-@router.put("/posts/{post_id}", response_model=None)
-async def update_likes(post_id: int):
+@router.put("/posts/{post_id}", response_model=post_schema.PostCreateResponse)
+async def update_likes(post_id: int, like_count: int, post_body: post_schema.PostCreate):
+    return post_schema.PostCreateResponse(id=post_id, like_count=like_count+1, **post_body.dict())
+
+@router.delete("/posts/{post_id}", response_model=None)
+async def delete_post(post_id: int):
     return
