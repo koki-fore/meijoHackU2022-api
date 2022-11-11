@@ -1,4 +1,3 @@
-from typing import Optional # Nullでも平気
 from datetime import datetime
 from pydantic import BaseModel, Field
 
