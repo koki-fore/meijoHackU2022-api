@@ -11,5 +11,14 @@ class CategoryBase(BaseModel):
     created_at: datetime
     updated_at: datetime
     
-class CategoryCreate(CategoryBase):
+class CategoryCreateResponse(CategoryBase):
     pass
+
+    class Config:
+        orm_mode = True
+    
+class Category(CategoryBase):
+    pass
+
+    class Config:
+        orm_mode = True
