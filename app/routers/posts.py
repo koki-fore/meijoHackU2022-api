@@ -2,7 +2,7 @@ from typing import List
 
 from fastapi import APIRouter
 
-import app.schemas.posts as post_schema
+import app.schemas.post as post_schema
 
 router = APIRouter()
 
