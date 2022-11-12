@@ -1,20 +1,24 @@
+from typing import List
+
 from fastapi import APIRouter
+
+import app.schemas.challenge as challenge_schema
 
 router = APIRouter()
 
 
-@router.get("/challenges")
+@router.get("/challenges", response_model=List[challenge_schema.Challenge])
 async def list_challenges():
     pass
 
-@router.post("/challenges")
-async def create_challenge():
-    pass
+@router.post("/challenges", response_model=challenge_schema.ChallengeCreateResponse)
+async def create_challenge(challenge_body: challenge_schema.ChallengeCreate):
+    return challenge_schema.ChallengeCreateResponse(id=2, **challenge_body.dict())
 
-@router.put("/challenges/{challenge_id}")
-async def update_challenge():
-    pass
+@router.put("/challenges/{challenge_id}", response_model=challenge_schema.ChallengeCreateResponse)
+async def update_challenge(challenge_id: int, challenge_body: challenge_schema.ChallengeCreate):
+    return challenge_schema.ChallengeCreateResponse(id=challenge_id, **challenge_body.dict())
 
-@router.delete("/challenges/{challenge_id}")
-async def delete_challenge():
+@router.delete("/challenges/{challenge_id}", response_model=None)
+async def delete_challenge(challnge_id: int):
     pass
