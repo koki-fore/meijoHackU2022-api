@@ -5,7 +5,7 @@ from .base import TimestampMixin
 from app.db import Base
 
 
-class Challenge_category(Base, TimestampMixin):
+class Challenge(Base, TimestampMixin):
     __tablename__ = "challenges"
     
     id = Column(Integer, primary_key=True)
