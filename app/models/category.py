@@ -8,5 +8,5 @@ class Category(Base, TimestampMixin):
     __tablename__ = "categories"
     
     id = Column(Integer, primary_key=True)
-    title = Column(String(1024))
+    title = Column(String(1024), nullable=False)
     
