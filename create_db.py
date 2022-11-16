@@ -1,5 +1,5 @@
 from sqlalchemy import create_engine
-
+import os
 from app.db import Base
 
 from app.models.user import User
@@ -12,15 +12,16 @@ from app.models.follow import Follow
 from app.models.like import Like
 from app.models.post import Post
 
-
-DB_URL = "mysql+pymysql://root@db:3306/demo?charset=utf8"
+'''
+テーブル作成(すでに存在する場合は何もしない)
+python create_db.pyで実行
+'''
+DB_URL = "mysql+pymysql://root@db:3306/meijoHackU2022-db?charset=utf8"
 engine = create_engine(DB_URL, echo=True)
 
-
-def reset_database():
-    Base.metadata.drop_all(bind=engine)
+def create_database():
     Base.metadata.create_all(bind=engine)
+    return 
 
-
-if __name__ == "__main__":
-    reset_database()
+if __name__=="__main__":
+    create_database()
