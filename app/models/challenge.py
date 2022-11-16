@@ -12,3 +12,5 @@ class Challenge_category(Base, TimestampMixin):
     title = Column(String(1024), nullable=False)
     text = Column(String(1024))
     experience_point = Column(Integer, default=0, nullable=False)
+    
+    posts = relationship("Post", back_populates="challenge")

@@ -15,3 +15,7 @@ class Post(Base):
     picture_path_03 = Column(String(255))
     picture_path_04 = Column(String(255))
     like_count = Column(Integer, default=0, nullable=False)
+    
+    user = relationship("User", back_populates="posts")
+    comments = relationship("Comment", back_populates="post")
+    challenge = relationship("Challenge", back_populates="posts")

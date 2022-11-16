@@ -19,3 +19,8 @@ class User(Base, TimestampMixin):
     description = Column(String(1024))
     follower_num = Column(Integer, default=0, nullable=False)
     followee_num = Column(Integer, default=0, nullable=False)
+    
+    posts = relationship("Post", back_populates="user")
+    comments = relationship("Comment", back_populates="user")
+    likes = relationship("Like", back_populates="user")
+    challenge_completed = relationship("Challenge_completed", back_populates="user")

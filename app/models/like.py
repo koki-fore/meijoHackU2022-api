@@ -11,3 +11,5 @@ class Like(Base, TimestampMixin):
     id = Column(Integer, primary_key=True)
     user_FK = Column(Integer, ForeignKey('users.id'))
     post_FK = Column(Integer, ForeignKey('posts.id'))
+    
+    user = relationship("User", back_populates="likes")
