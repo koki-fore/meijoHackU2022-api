@@ -2,7 +2,7 @@ from sqlalchemy import Column, Integer, String, ForeignKey, TIMESTAMP, text
 from sqlalchemy.orm import relationship
 
 from .base import TimestampMixin
-from app.db import Base
+from db import Base
 
 class Category(Base, TimestampMixin):
     __tablename__ = "categories"
