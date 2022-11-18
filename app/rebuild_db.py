@@ -16,7 +16,7 @@ from models.follow import Follow
 from models.like import Like
 from models.post import Post
 
-DB_URL = "mysql+pymysql://root@db:3306/meijoHackU2022-db?charset=utf8"
+DB_URL = "mysql://root@db:3306/meijoHackU2022-db?charset=utf8"
 engine = create_engine(DB_URL, echo=True)
 
 
