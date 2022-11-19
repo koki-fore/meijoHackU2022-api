@@ -5,7 +5,7 @@ DBの設定ファイル
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker,declarative_base
 
-DB_URL = "mysql+aiomysql://root@db:3306/meijoHackU2022-db?charset=utf8"
+DB_URL = "mysql+pymysql://root@db:3306/meijoHackU2022-db?charset=utf8"
 engine=create_engine(DB_URL)
 
 sessionClass=sessionmaker(

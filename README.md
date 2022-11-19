@@ -18,3 +18,16 @@ localhost:8080/docs
 ```bash
 docker-compose exec db mysql meijoHackU2022-db
 ```
+
+# MySQLにデータベースを作成する方法
+## 初めて作成
+dockerコンテナの中に入る
+create_db.pyのあるディレクトリで
+```
+python create_db.py
+```
+## データベース作り直す場合
+dockerコンテナの中に入る
+```
+python rebuild_db.py
+```
