@@ -10,7 +10,7 @@ class Comment(Base, TimestampMixin):
     id = Column(Integer, primary_key=True)
     user_FK = Column(Integer, ForeignKey('users.id'))
     post_FK = Column(Integer, ForeignKey('posts.id'))
-    text = Column(String(1024), nullable=False)
+    text = Column(String(255), nullable=False)
     
     user = relationship("User", back_populates="comments")
     post = relationship("Post", back_populates="comments")
