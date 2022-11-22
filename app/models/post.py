@@ -1,9 +1,10 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 
-from db import Base
+from .base import TimestampMixin
+from app.db import Base
 
-class Post(Base):
+class Post(Base, TimestampMixin):
     __tablename__ = "posts"
     
     id = Column(Integer, primary_key=True)

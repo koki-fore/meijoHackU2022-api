@@ -1,9 +1,11 @@
 from typing import List
 
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
 
 import app.schemas.post as post_schema
+import app.cruds.post as post_crud
 
+from app.db import get_db
 router = APIRouter()
 
 
@@ -12,8 +14,8 @@ async def list_posts():
     pass
 
 @router.post("/posts", response_model=post_schema.PostCreateResponse)
-async def create_post(post_body: post_schema.PostCreate):
-    return post_schema.PostCreateResponse(id=1, like_count=0, **post_body.dict())
+async def create_post(post_body: post_schema.PostCreate, db = Depends(get_db)):
+    return post_crud.create_post(db=db, post_create=post_body)
 
 @router.put("/posts/{post_id}", response_model=post_schema.PostCreateResponse)
 async def update_likes(post_id: int, like_count: int, post_body: post_schema.PostCreate):

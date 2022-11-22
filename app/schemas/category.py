@@ -10,6 +10,9 @@ class CategoryBase(BaseModel):
     created_at: datetime
     updated_at: datetime
     
+class CategoryCreate(CategoryBase):
+    pass
+    
 class CategoryCreateResponse(CategoryBase):
     pass
 
