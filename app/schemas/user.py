@@ -10,7 +10,8 @@ class UserBase(BaseModel):
     screen_name: str
     first_name: str
     last_name: str
-    picture_description: Optional[str] = Field(None, example='初めまして')
+    profile_picture_path: Optional[str] = Field(None)
+    description: Optional[str] = Field(None, example='初めまして')
     created_at: datetime
     updated_at: datetime
 
