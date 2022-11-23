@@ -5,7 +5,7 @@ from fastapi import APIRouter, Depends
 import app.schemas.comment as comment_schema
 import app.cruds.comment as comment_crud
 
-from db import get_db
+from app.db import get_db
 router = APIRouter()
 
 

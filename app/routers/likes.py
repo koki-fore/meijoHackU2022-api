@@ -5,7 +5,7 @@ from fastapi import APIRouter, Depends
 import app.schemas.like as like_schema
 import app.cruds.like as like_crud
 
-from db import get_db
+from app.db import get_db
 router = APIRouter()
 
 

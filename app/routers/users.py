@@ -3,7 +3,7 @@ from typing import List
 from fastapi import APIRouter, Depends
 
 import app.cruds.user as user_crud
-from db import get_db
+from app.db import get_db
 
 import app.schemas.user as user_schema
 
