@@ -5,7 +5,7 @@ from fastapi import APIRouter, Depends
 import app.schemas.follow as follow_schema
 import app.cruds.follow as follow_crud
 
-from app.db import get_db
+from db import get_db
 router = APIRouter()
 
 

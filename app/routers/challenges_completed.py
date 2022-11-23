@@ -5,7 +5,7 @@ from fastapi import APIRouter, Depends
 import app.schemas.challenges_completed as challenges_completed_schema
 import app.cruds.challenge_completed as challenge_completed_crud
 
-from app.db import get_db
+from db import get_db
 router = APIRouter()
 
 

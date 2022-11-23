@@ -5,7 +5,7 @@ from fastapi import APIRouter, Depends
 import app.schemas.challenge_category as challenge_category_schema
 import app.cruds.challenge_category as challenge_category_crud
 
-from app.db import get_db
+from db import get_db
 router = APIRouter()
 
 

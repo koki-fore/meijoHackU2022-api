@@ -5,7 +5,7 @@ from fastapi import APIRouter, Depends
 import app.schemas.category as category_schema
 import app.cruds.category as category_crud
 
-from app.db import get_db
+from db import get_db
 router = APIRouter()
 
 

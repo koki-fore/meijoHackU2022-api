@@ -5,7 +5,7 @@ from fastapi import APIRouter, Depends
 import app.schemas.post as post_schema
 import app.cruds.post as post_crud
 
-from app.db import get_db
+from db import get_db
 router = APIRouter()
 
 
