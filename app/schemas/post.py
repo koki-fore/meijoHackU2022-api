@@ -18,7 +18,7 @@ class PostBase(BaseModel):
 class PostCreate(PostBase):
     pass
         
-class PostCreateResponse(PostCreate):
+class PostCreateResponse(PostBase):
     id: int
     like_count: int
     

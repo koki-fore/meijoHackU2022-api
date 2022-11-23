@@ -13,8 +13,8 @@ router = APIRouter()
 async def list_likes():
     pass
 
-@router.post("/likes", response_model=like_schema.Like)
-async def create_like(like_body: like_schema.Like, db=Depends(get_db)):
+@router.post("/likes", response_model=like_schema.LikeCreateResponse)
+async def create_like(like_body: like_schema.LikeCreate, db=Depends(get_db)):
     return like_crud.create_like(db=db, like_create=like_body)
 
 @router.delete("/likes/{like_id}", response_model=None)

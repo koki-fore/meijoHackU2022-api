@@ -3,12 +3,23 @@ from pydantic import BaseModel
 
 # APIのリクエストやレスポンスの型を定義する
 
-class Like(BaseModel):
-    id: int
+class LikeBase(BaseModel):
     user_FK: int
     post_FK: int
     created_at: datetime
     updated_at: datetime
+
+class LikeCreate(LikeBase):
+    pass
+
+class LikeCreateResponse(LikeBase):
+    id: int
+    
+    class Config:
+        orm_mode = True
+        
+class Like(LikeBase):
+    id: int
     
     class Config:
         orm_mode = True

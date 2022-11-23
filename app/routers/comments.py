@@ -13,8 +13,8 @@ router = APIRouter()
 async def list_comments():
     pass
 
-@router.post("/comments", response_model=comment_schema.Comment)
-async def create_comment(comment_body: comment_schema.Comment, db=Depends(get_db)):
+@router.post("/comments", response_model=comment_schema.CommentCreateResponse)
+async def create_comment(comment_body: comment_schema.CommentCreate, db=Depends(get_db)):
     return comment_crud.create_comment(db=db, comment_create=comment_body)
 
 @router.delete("/comments/{comment_id}", response_model=None)
