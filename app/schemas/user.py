@@ -6,13 +6,17 @@ from pydantic import BaseModel, Field
 
 class UserBase(BaseModel):
     firebase_FK: int
-    user_id: str
-    screen_name: str
-    first_name: str
-    last_name: str
-    picture_description: Optional[str] = Field(None, example='初めまして')
+    user_id: Optional[str] = Field(None)
+    screen_name: Optional[str] = Field(None)
+    first_name: Optional[str] = Field(None)
+    last_name: Optional[str] = Field(None)
+    profile_picture_path: Optional[str] = Field(None)
+    description: Optional[str] = Field(None, example='初めまして')
     created_at: datetime
     updated_at: datetime
+    
+    class Config:
+        orm_mode=True
 
 class UserCreate(UserBase):
     pass

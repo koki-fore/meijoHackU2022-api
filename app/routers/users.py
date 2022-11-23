@@ -1,6 +1,9 @@
 from typing import List
 
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
+
+import app.cruds.user as user_crud
+from app.db import get_db
 
 import app.schemas.user as user_schema
 
@@ -20,8 +23,8 @@ async def get_user():
     pass
 
 @router.post("/users/", response_model=user_schema.UserCreateResponse)
-async def create_user(user_body: user_schema.UserCreate):
-    return user_schema.UserCreateResponse(id=1, experience_point_num=0, followee_num=0, follower_num=0, **user_body.dict())
+async def create_user(user_body: user_schema.UserCreate, db = Depends(get_db)):
+    return user_crud.create_user(db=db, user_create=user_body)
 
 @router.put("/users/{user_id}", response_model=user_schema.UserCreateResponse)
 async def update_user(user_id: int, experience_point_num: int, follower_num:int, followee_num: int, user_body: user_schema.UserCreate):

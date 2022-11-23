@@ -2,7 +2,7 @@ from sqlalchemy import Column, Integer, String, ForeignKey, TIMESTAMP, text
 from sqlalchemy.orm import relationship
 
 from .base import TimestampMixin
-from db import Base
+from app.db import Base
 
 class Comment(Base, TimestampMixin):
     __tablename__ = "comments"
