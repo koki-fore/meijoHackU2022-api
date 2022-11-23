@@ -20,6 +20,7 @@ docker-compose exec db mysql meijoHackU2022-db
 ```
 
 # MySQLにデータベースを作成する方法
+注意：dockerコンテナで動かす場合、一度コンテナ内でエラーを出してDockerが落ちるのを防いだ後にmodelsの中のファイルをfrom db import **** にして対応
 ## 初めて作成
 dockerコンテナの中に入る
 create_db.pyのあるディレクトリで
