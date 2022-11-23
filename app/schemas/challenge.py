@@ -5,7 +5,6 @@ from pydantic import BaseModel, Field
 # APIのリクエストやレスポンスの型を定義する
 
 class ChallengeBase(BaseModel):
-    category_FK: int
     title: str
     text: Optional[str] = Field(None)
     experience_point: int = Field(0)
