@@ -11,8 +11,8 @@ router = APIRouter()
 
 
 @router.get("/users", response_model=List[user_schema.User])
-async def list_users():
-    pass
+async def list_users(db = Depends(get_db)):
+    return user_crud.get_all_users(db=db)
 
 @router.get("/users/me")
 async def get_user_me():
