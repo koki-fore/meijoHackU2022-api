@@ -24,6 +24,7 @@ services:
       TZ: 'Asia/Tokyo'  # タイムゾーンを日本時間に設定
     volumes:
       - mysql_data:/var/lib/mysql
+      - ./app/my.cnf:/etc/mysql/conf.d/my.cnf
     command: --default-authentication-plugin=mysql_native_password  # MySQL8.0ではデフォルトが"caching_sha2_password"で、ドライバが非対応のため変更
     ports:
       - 3306:3306  # ホストマシンのポート3306を、docker内のポート3306に接続する
