@@ -1,7 +1,7 @@
 from datetime import datetime
 from pydantic import BaseModel
 
-from .user import User
+# from .user import User
 # APIのリクエストやレスポンスの型を定義する
 
 class Challenge_completedBase(BaseModel):
@@ -24,7 +24,7 @@ class Challenge_completedCreateResponse(Challenge_completedBase):
 class Challenge_completed(Challenge_completedBase):
     id: int
     
-    user: User
+    # user: User
     
     class Config:
         orm_mode = True
