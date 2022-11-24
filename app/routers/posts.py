@@ -10,8 +10,8 @@ router = APIRouter()
 
 
 @router.get("/posts", response_model=List[post_schema.Post])
-async def list_posts():
-    pass
+async def list_posts(db=Depends(get_db)):
+    return post_crud.get_all_posts(db=db)
 
 @router.post("/posts", response_model=post_schema.PostCreateResponse)
 async def create_post(post_body: post_schema.PostCreate, db = Depends(get_db)):

@@ -1,8 +1,12 @@
+import sys
+
+sys.path.append('/app')
+
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 
 from .base import TimestampMixin
-from app.db import Base
+from db import Base
 
 class Post(Base, TimestampMixin):
     __tablename__ = "posts"

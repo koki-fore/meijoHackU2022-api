@@ -10,8 +10,8 @@ router = APIRouter()
 
 
 @router.get("/comments",response_model=List[comment_schema.Comment])
-async def list_comments():
-    pass
+async def list_comments(db=Depends(get_db)):
+    return comment_crud.get_all_comment(db=db)
 
 @router.post("/comments", response_model=comment_schema.CommentCreateResponse)
 async def create_comment(comment_body: comment_schema.CommentCreate, db=Depends(get_db)):

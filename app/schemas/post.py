@@ -2,6 +2,8 @@ from typing import Optional # Nullでも平気
 from datetime import datetime
 from pydantic import BaseModel, Field
 
+from .user import User
+
 # APIのリクエストやレスポンスの型を定義する
 
 class PostBase(BaseModel):
@@ -28,6 +30,7 @@ class PostCreateResponse(PostBase):
 class Post(PostBase):
     id: int
     like_count: int = Field(0, example=100)
+    user: User
     
     class Config:
         orm_mode = True
