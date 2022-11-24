@@ -10,8 +10,8 @@ router = APIRouter()
 
 
 @router.get("/challenge-categories", response_model=List[challenge_category_schema.Challenge_category])
-async def list_challenge_category():
-    pass
+async def list_challenge_category(db=Depends(get_db)):
+    return challenge_category_crud.get_all_challenge_categories(db=db)
 
 @router.post("/challenge-categories", response_model=challenge_category_schema.Challenge_categoryCreateResponse)
 async def create_challenge_category(challenge_category_body: challenge_category_schema.Challenge_categoryCreate, db=Depends(get_db)):

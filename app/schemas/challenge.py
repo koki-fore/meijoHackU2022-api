@@ -1,7 +1,8 @@
-from typing import Optional # Nullでも平気
+from typing import List, Optional # Nullでも平気
 from datetime import datetime
 from pydantic import BaseModel, Field
 
+from .post import Post
 # APIのリクエストやレスポンスの型を定義する
 
 class ChallengeBase(BaseModel):
@@ -22,6 +23,8 @@ class ChallengeCreateResponse(ChallengeBase):
 
 class Challenge(ChallengeBase):
     id: int
+    
+    posts: List[Post]
     
     class Config:
         orm_mode = True

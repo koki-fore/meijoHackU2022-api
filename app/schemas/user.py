@@ -1,6 +1,9 @@
-from typing import Optional # Nullでも平気
+from typing import List, Optional # Nullでも平気
 from datetime import datetime
 from pydantic import BaseModel, Field
+# from .post import Post
+from .challenges_completed import Challenge_completed
+from .comment import Comment
 
 # APIのリクエストやレスポンスの型を定義する
 
@@ -35,6 +38,9 @@ class User(UserBase):
     experience_point_num : Optional[int] = Field(0)
     follower_num:int = Field(0)
     followee_num:int = Field(0)
+    # posts: List[Post]
+    comments: List[Comment]
+    challenge_completed: List[Challenge_completed]
     
     class Config:
         orm_mode = True

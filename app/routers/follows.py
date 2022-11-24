@@ -10,8 +10,8 @@ router = APIRouter()
 
 
 @router.get("/fallows", response_model=List[follow_schema.Follow])
-async def list_fallows():
-    pass
+async def list_fallows(db=Depends(get_db)):
+    return follow_crud.get_all_follows(db=db)
 
 @router.post("/fallows", response_model=follow_schema.FollowCreateResponse)
 async def create_fallow(follow_body: follow_schema.FollowCreate, db=Depends(get_db)):

@@ -1,6 +1,7 @@
 from datetime import datetime
 from pydantic import BaseModel
 
+from .user import User
 # APIのリクエストやレスポンスの型を定義する
 
 class LikeBase(BaseModel):
@@ -20,6 +21,7 @@ class LikeCreateResponse(LikeBase):
         
 class Like(LikeBase):
     id: int
+    user: User
     
     class Config:
         orm_mode = True

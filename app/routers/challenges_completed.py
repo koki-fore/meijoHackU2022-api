@@ -10,8 +10,8 @@ router = APIRouter()
 
 
 @router.get("/challenge-completed", response_model=List[challenges_completed_schema.Challenge_completed])
-async def list_challenge_completed():
-    pass
+async def list_challenge_completed(db=Depends(get_db)):
+    return challenge_completed_crud.get_all_challenge_completed(db=db)
 
 @router.post("/challenge-completed", response_model=challenges_completed_schema.Challenge_completedCreateResponse)
 async def create_challenge_completed(challenge_completed_body: challenges_completed_schema.Challenge_completedCreate, db=Depends(get_db)):

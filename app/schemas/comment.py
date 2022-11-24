@@ -1,6 +1,8 @@
 from datetime import datetime
 from pydantic import BaseModel
 
+from .user import User
+from .post import Post
 # APIのリクエストやレスポンスの型を定義する
 
 class CommentBase(BaseModel):
@@ -21,6 +23,9 @@ class CommentCreateResponse(CommentBase):
         
 class Comment(CommentBase):
     id: int
+    
+    user: User
+    post: Post
     
     class Config:
         orm_mode = True

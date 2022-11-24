@@ -10,8 +10,8 @@ router = APIRouter()
 
 
 @router.get("/categories", response_model=List[category_schema.Category])
-async def list_categories():
-    pass
+async def list_categories(db=Depends(get_db)):
+    return category_crud.get_all_categories(db=db)
 
 @router.post("/categories", response_model=category_schema.CategoryCreateResponse)
 async def create_category(category_body: category_schema.CategoryCreate, db=Depends(get_db)):
