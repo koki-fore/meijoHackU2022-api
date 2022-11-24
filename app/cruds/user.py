@@ -14,5 +14,4 @@ def create_user(db: Session, user_create: user_schema.UserCreate) -> user_model.
 
 def get_all_users(db: Session) -> List[user_model.User]:
     users = db.query(user_model.User).all()
-    
     return users
