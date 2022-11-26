@@ -15,3 +15,7 @@ def create_user(db: Session, user_create: user_schema.UserCreate) -> user_model.
 def get_all_users(db: Session) -> List[user_model.User]:
     users = db.query(user_model.User).all()
     return users
+
+def get_users_me(db: Session, uid: str) -> user_model.User:
+    user_me = db.query(user_model.User).filter(user_model.User.firebase_FK==uid).one_or_none()
+    return user_me

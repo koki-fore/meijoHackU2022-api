@@ -14,9 +14,9 @@ router = APIRouter()
 async def list_users(db = Depends(get_db)):
     return user_crud.get_all_users(db=db)
 
-@router.get("/users/me")
-async def get_user_me(current_user=Depends()):
-    return current_user
+@router.get("/users/me/{uid}", response_model=user_schema.User)
+async def get_user_me(uid: str, db = Depends(get_db)):
+    return user_crud.get_users_me(uid=uid ,db=db)
 
 @router.post("/users/", response_model=user_schema.UserCreateResponse)
 async def create_user(user_body: user_schema.UserCreate, db = Depends(get_db)):
