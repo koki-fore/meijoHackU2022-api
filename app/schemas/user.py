@@ -8,7 +8,7 @@ from .comment import Comment
 # APIのリクエストやレスポンスの型を定義する
 
 class UserBase(BaseModel):
-    firebase_FK: int
+    firebase_FK: str
     user_id: Optional[str] = Field(None)
     screen_name: Optional[str] = Field(None)
     first_name: Optional[str] = Field(None)
@@ -16,12 +16,15 @@ class UserBase(BaseModel):
     profile_picture_path: Optional[str] = Field(None)
     description: Optional[str] = Field(None, example='初めまして')
     
-    class Config:
-        orm_mode=True
+    # class Config:
+    #     orm_mode=True
 
 class UserCreate(UserBase):
     pass
 
+    class Config:
+        orm_mode = True
+    
 class UserCreateResponse(UserBase):
     id: int
     experience_point_num : Optional[int] = Field(0)
