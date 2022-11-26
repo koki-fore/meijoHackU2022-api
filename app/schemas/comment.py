@@ -9,20 +9,22 @@ class CommentBase(BaseModel):
     user_FK: int
     post_FK: int
     text: str
-    created_at: datetime
-    updated_at: datetime
     
 class CommentCreate(CommentBase):
     pass
 
 class CommentCreateResponse(CommentBase):
     id: int
+    created_at: datetime
+    updated_at: datetime
     
     class Config:
         orm_mode = True
         
 class Comment(CommentBase):
     id: int
+    created_at: datetime
+    updated_at: datetime
     
     # user: User
     # post: Post

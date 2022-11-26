@@ -6,20 +6,22 @@ from pydantic import BaseModel, Field
 
 class CategoryBase(BaseModel):
     title: str = Field(None, example='地震')
-    created_at: datetime
-    updated_at: datetime
     
 class CategoryCreate(CategoryBase):
     pass
     
 class CategoryCreateResponse(CategoryBase):
     id: int
+    created_at: datetime
+    updated_at:datetime
 
     class Config:
         orm_mode = True
     
 class Category(CategoryBase):
     id: int
+    created_at: datetime
+    updated_at:datetime
 
     class Config:
         orm_mode = True

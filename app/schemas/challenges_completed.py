@@ -7,22 +7,22 @@ from pydantic import BaseModel
 class Challenge_completedBase(BaseModel):
     challenge_FK: int
     user_FK: int
-    created_at: datetime
-    updated_at:datetime
-
-
 
 class Challenge_completedCreate(Challenge_completedBase):
     pass
 
 class Challenge_completedCreateResponse(Challenge_completedBase):
     id: int
+    created_at: datetime
+    updated_at:datetime
     
     class Config:
         orm_mode = True
         
 class Challenge_completed(Challenge_completedBase):
     id: int
+    created_at: datetime
+    updated_at:datetime
     
     # user: User
     

@@ -6,20 +6,22 @@ from pydantic import BaseModel
 class FollowBase(BaseModel):
     follower_id: int # followしている人
     followee_id: int # followされた人
-    created_at: datetime
-    updated_at:datetime
 
 class FollowCreate(FollowBase):
     pass
 
 class FollowCreateResponse(FollowBase):
     id: int
+    created_at: datetime
+    updated_at:datetime
     
     class Config:
         orm_mode = True
         
 class Follow(FollowBase):
     id: int
+    created_at: datetime
+    updated_at:datetime
     
     class Config:
         orm_mode = True

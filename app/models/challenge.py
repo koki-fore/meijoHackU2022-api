@@ -14,7 +14,7 @@ class Challenge(Base, TimestampMixin):
     
     id = Column(Integer, primary_key=True)
     title = Column(String(255), nullable=False)
-    text = Column(String(255))
+    text = Column(String(455))
     experience_point = Column(Integer, default=0, nullable=False)
     
     posts = relationship("Post", back_populates="challenge")

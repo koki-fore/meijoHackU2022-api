@@ -7,20 +7,22 @@ from .user import User
 class LikeBase(BaseModel):
     user_FK: int
     post_FK: int
-    created_at: datetime
-    updated_at: datetime
 
 class LikeCreate(LikeBase):
     pass
 
 class LikeCreateResponse(LikeBase):
     id: int
+    created_at: datetime
+    updated_at: datetime
     
     class Config:
         orm_mode = True
         
 class Like(LikeBase):
     id: int
+    created_at: datetime
+    updated_at: datetime
     user: User
     
     class Config:
