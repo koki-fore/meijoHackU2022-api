@@ -9,20 +9,22 @@ class ChallengeBase(BaseModel):
     title: str
     text: Optional[str] = Field(None)
     experience_point: int = Field(0)
-    created_at: datetime
-    updated_at: datetime
     
 class ChallengeCreate(ChallengeBase):
     pass
 
 class ChallengeCreateResponse(ChallengeBase):
     id: int
+    created_at: datetime
+    updated_at: datetime
     
     class Config:
         orm_mode = True
 
 class Challenge(ChallengeBase):
     id: int
+    created_at: datetime
+    updated_at: datetime
     
     posts: List[Post]
     

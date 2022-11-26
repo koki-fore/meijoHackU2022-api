@@ -14,8 +14,6 @@ class PostBase(BaseModel):
     picture_path_02: Optional[str] = Field(None)
     picture_path_03: Optional[str] = Field(None)
     picture_path_04: Optional[str] = Field(None)
-    created_at: datetime
-    updated_at: datetime
     
 class PostCreate(PostBase):
     pass
@@ -23,6 +21,8 @@ class PostCreate(PostBase):
 class PostCreateResponse(PostBase):
     id: int
     like_count: int
+    created_at: datetime
+    updated_at: datetime
     
     class Config:
         orm_mode = True
@@ -30,6 +30,8 @@ class PostCreateResponse(PostBase):
 class Post(PostBase):
     id: int
     like_count: int = Field(0, example=100)
+    created_at: datetime
+    updated_at: datetime
     user: User
     
     class Config:
