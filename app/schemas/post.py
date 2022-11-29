@@ -3,6 +3,7 @@ from datetime import datetime
 from pydantic import BaseModel, Field
 
 from .user import User
+from .challenge import Challenge
 
 # APIのリクエストやレスポンスの型を定義する
 
@@ -33,6 +34,7 @@ class Post(PostBase):
     created_at: datetime
     updated_at: datetime
     user: User
+    challenge: Challenge
     
     class Config:
         orm_mode = True
