@@ -1,4 +1,4 @@
-from typing import Optional # Nullでも平気
+from typing import List, Optional # Nullでも平気
 from datetime import datetime
 from pydantic import BaseModel, Field
 
@@ -36,7 +36,7 @@ class Post(PostBase):
     updated_at: datetime
     user: User
     challenge: Challenge
-    comments: Comment
+    comments: List[Comment]
     
     class Config:
         orm_mode = True
