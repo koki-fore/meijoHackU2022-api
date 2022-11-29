@@ -3,7 +3,7 @@ from datetime import datetime
 from pydantic import BaseModel, Field
 # from .post import Post
 from .challenges_completed import Challenge_completed
-from .comment import Comment
+# from .comment import Comment
 
 # APIのリクエストやレスポンスの型を定義する
 
@@ -44,7 +44,7 @@ class User(UserBase):
     created_at: datetime
     updated_at: datetime
     # posts: List[Post]
-    comments: List[Comment]
+    # comments: List[Comment]
     challenge_completed: List[Challenge_completed]
     
     class Config:

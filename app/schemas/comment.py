@@ -1,7 +1,7 @@
 from datetime import datetime
 from pydantic import BaseModel
 
-# from .user import User
+from .user import User
 # from .post import Post
 # APIのリクエストやレスポンスの型を定義する
 
@@ -26,7 +26,7 @@ class Comment(CommentBase):
     created_at: datetime
     updated_at: datetime
     
-    # user: User
+    user: User
     # post: Post
     
     class Config:

@@ -4,6 +4,7 @@ from pydantic import BaseModel, Field
 
 from .user import User
 from .challenge import Challenge
+from .comment import Comment
 
 # APIのリクエストやレスポンスの型を定義する
 
@@ -35,6 +36,7 @@ class Post(PostBase):
     updated_at: datetime
     user: User
     challenge: Challenge
+    comments: Comment
     
     class Config:
         orm_mode = True
