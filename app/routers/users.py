@@ -22,9 +22,10 @@ async def get_user_me(uid: str, db = Depends(get_db)):
 async def create_user(user_body: user_schema.UserCreate, db = Depends(get_db)):
     return user_crud.create_user(db=db, user_create=user_body)
 
-@router.put("/users/{user_id}", response_model=user_schema.UserCreateResponse)
-async def update_user(user_id: int, experience_point_num: int, follower_num:int, followee_num: int, user_body: user_schema.UserCreate):
-    return user_schema.UserCreateResponse(id=user_id, experience_point_num=experience_point_num, follower_num=follower_num, followee_num=followee_num, **user_body.dict())
+@router.put("/users/{uid}", response_model=user_schema.UserCreateResponse)
+async def update_user(user_id: str, user_body: user_schema.UserUpdate, db=Depends(get_db)):
+    user = user_crud.get_users_me(db, uid=user_id)
+    return user_crud.update_user(db, user_body, original=user)
 
 @router.delete("/users/{user_id}", response_model=None)
 async def delete_user(user_id: int):

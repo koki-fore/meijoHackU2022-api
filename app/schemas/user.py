@@ -1,6 +1,7 @@
 from typing import List, Optional # Nullでも平気
 from datetime import datetime
 from pydantic import BaseModel, Field
+from sqlalchemy import Column, Integer
 # from .post import Post
 from .challenges_completed import Challenge_completed
 # from .comment import Comment
@@ -27,7 +28,7 @@ class UserCreate(UserBase):
     
 class UserCreateResponse(UserBase):
     id: int
-    experience_point_num : Optional[int] = Field(0)
+    experience_point_num : int = Field(0)
     follower_num:int = Field(0)
     followee_num:int = Field(0)
     created_at: datetime
@@ -38,7 +39,7 @@ class UserCreateResponse(UserBase):
 
 class User(UserBase):
     id: int
-    experience_point_num : Optional[int] = Field(0)
+    experience_point_num : int = Field(0)
     follower_num:int = Field(0)
     followee_num:int = Field(0)
     created_at: datetime
@@ -46,6 +47,12 @@ class User(UserBase):
     # posts: List[Post]
     # comments: List[Comment]
     challenge_completed: List[Challenge_completed]
+    
+    class Config:
+        orm_mode = True
+        
+class UserUpdate(BaseModel):
+    experience_point_num: int = Field(0)
     
     class Config:
         orm_mode = True
