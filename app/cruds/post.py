@@ -15,3 +15,7 @@ def create_post(db: Session, post_create: post_schema.PostCreate) -> post_model.
 def get_all_posts(db: Session) -> List[post_model.Post]:
     posts = db.query(post_model.Post).all()
     return posts
+
+def get_post(db: Session, id: int) -> post_model.Post:
+    post = db.query(post_model.Post).filter(post_model.Post.id==id).one_or_none()
+    return post
