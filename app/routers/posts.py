@@ -26,5 +26,6 @@ async def update_likes(post_id: int, like_count: int, post_body: post_schema.Pos
     return post_schema.PostCreateResponse(id=post_id, like_count=like_count+1, **post_body.dict())
 
 @router.delete("/posts/{post_id}", response_model=None)
-async def delete_post(post_id: int):
-    return
+async def delete_post(post_id: int, db = Depends(get_db)):
+    post = post_crud.get_post(db, id=post_id)
+    return post_crud.delete_post(db, original=post)
