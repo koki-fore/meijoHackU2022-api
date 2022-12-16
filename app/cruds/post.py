@@ -19,3 +19,7 @@ def get_all_posts(db: Session) -> List[post_model.Post]:
 def get_post(db: Session, id: int) -> post_model.Post:
     post = db.query(post_model.Post).filter(post_model.Post.id==id).one_or_none()
     return post
+
+def delete_post(db: Session, original: post_model.Post) -> None:
+    db.delete(original)
+    db.commit()

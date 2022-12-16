@@ -22,7 +22,7 @@ async def get_user_me(uid: str, db = Depends(get_db)):
 async def create_user(user_body: user_schema.UserCreate, db = Depends(get_db)):
     return user_crud.create_user(db=db, user_create=user_body)
 
-@router.put("/users/{uid}", response_model=user_schema.UserCreateResponse)
+@router.put("/users", response_model=user_schema.UserCreateResponse)
 async def update_user(user_id: str, user_body: user_schema.UserUpdate, db=Depends(get_db)):
     user = user_crud.get_users_me(db, uid=user_id)
     return user_crud.update_user(db, user_body, original=user)
